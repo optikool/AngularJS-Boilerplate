@@ -13,7 +13,17 @@ import routes from './app.routes';
 import home from './home'
 import instructions from './instructions';
 
-import navBar from './common/header/nav-bar';
+// import headerBar from './common/header';
+// import footerBar from './common/footer';
 
-export default angular.module('boilerplatePoc', [uirouter, home, instructions, navBar])
+import componentModule from './components';
+import servicesModule from './services';
+
+export default angular.module('boilerplatePoc', [
+        uirouter,
+        home,
+        instructions,
+        componentModule,
+        servicesModule
+    ])
     .config(routes);

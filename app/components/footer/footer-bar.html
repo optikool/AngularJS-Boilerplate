@@ -1,0 +1,12 @@
+<nav class="navbar fixed-bottom navbar-expand-lg navbar-dark bg-dark">
+    <div id="navbar-footer">
+        <ul class="navbar-nav justify-content-center">
+            <li class="nav-item" ng-class="vm.isActive('Home') ? 'active' : ''">
+                <a class="nav-link" ng-href="/">Home <span class="sr-only">(current)</span></a>
+            </li>
+            <li class="nav-item" ng-class="vm.isActive('Instructions') ? 'active' : ''">
+                <a class="nav-link" ng-href="/instructions">Instructions</a>
+            </li>
+        </ul>
+    </div>
+</nav>

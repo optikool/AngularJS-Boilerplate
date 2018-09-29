@@ -4,12 +4,12 @@
       <span class="navbar-toggler-icon"></span>
     </button>
 
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <div class="collapse navbar-collapse" id="navbar-header">
         <ul class="navbar-nav mr-auto justify-content-end">
-            <li class="nav-item active">
+            <li class="nav-item" ng-class="vm.isActive('Home') ? 'active' : ''">
                 <a class="nav-link" ng-href="/">Home <span class="sr-only">(current)</span></a>
             </li>
-            <li class="nav-item">
+            <li class="nav-item" ng-class="vm.isActive('Instructions') ? 'active' : ''">
                 <a class="nav-link" ng-href="/instructions">Instructions</a>
             </li>
         </ul>
