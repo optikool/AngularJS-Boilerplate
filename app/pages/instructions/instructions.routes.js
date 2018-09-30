@@ -1,10 +1,11 @@
 import InstructionsController from './instructions.controller';
+import template from './instructions.html';
 
 export default function routes($stateProvider) {
     $stateProvider
         .state('Instructions', {
             url: '/instructions',
-            template: require('./instructions.html'),
+            template,
             controller: InstructionsController,
             controllerAs: 'vm'
         });
