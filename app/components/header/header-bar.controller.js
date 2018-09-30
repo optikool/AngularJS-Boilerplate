@@ -4,7 +4,6 @@ class HeaderBarController {
 
         this.navbarService = navbarService;
         this.locale = LOCALE;
-        console.log('this.locale: ', this.locale);
     }
 
     isActive(state) {

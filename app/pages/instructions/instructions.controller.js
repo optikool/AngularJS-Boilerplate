@@ -1,7 +1,8 @@
 class HomeController {
-    constructor() {
+    constructor(LOCALE) {
         'ngInject';
 
+        this.locale = LOCALE;
     }
 
     $onInit() {
@@ -9,6 +10,6 @@ class HomeController {
     }
 }
 
-HomeController.$inject = [];
+HomeController.$inject = ['LOCALE'];
 
 export default HomeController;
