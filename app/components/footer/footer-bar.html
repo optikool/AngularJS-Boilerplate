@@ -1,12 +1,17 @@
 <nav class="navbar fixed-bottom navbar-expand-lg navbar-dark bg-dark">
-    <div id="navbar-footer">
-        <ul class="navbar-nav justify-content-center">
-            <li class="nav-item" ng-class="vm.isActive('Home') ? 'active' : ''">
-                <a class="nav-link" ng-href="/">Home</a>
-            </li>
-            <li class="nav-item" ng-class="vm.isActive('Instructions') ? 'active' : ''">
-                <a class="nav-link" ng-href="/instructions">Instructions</a>
-            </li>
-        </ul>
+    <div id="navbar-footer" class="row justify-content-between">
+        <div id="copy-year" class="col-md-2 align-items-center">
+            &#169; Copyright {{vm.copyYear}}
+        </div>
+        <div class="col-md-2">
+            <ul class="navbar-nav justify-content-end">
+                <li class="nav-item" ng-class="vm.isActive('Home') ? 'active' : ''">
+                    <a class="nav-link" ng-href="/">Home</a>
+                </li>
+                <li class="nav-item" ng-class="vm.isActive('Instructions') ? 'active' : ''">
+                    <a class="nav-link" ng-href="/instructions">Instructions</a>
+                </li>
+            </ul>
+        </div>
     </div>
 </nav>

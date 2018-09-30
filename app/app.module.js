@@ -3,13 +3,13 @@ import animate from 'angular-animate';
 import bootstrap from 'angular-ui-bootstrap';
 import uirouter from 'angular-ui-router';
 
-import 'bootstrap/dist/css/bootstrap.min.css';
+// import 'bootstrap/dist/css/bootstrap.min.css';
 
 import 'jquery';
 import 'popper.js';
 // import 'bootstrap';
 
-// import 'css/custom.scss';
+import './css/custom.less';
 
 import routes from './app.routes';
 import home from './pages/home'

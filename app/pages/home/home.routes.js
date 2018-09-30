@@ -4,11 +4,6 @@ export default function routes($stateProvider) {
     $stateProvider
         .state('Home', {
             url: '/home',
-            template: require('./home.html'),
-            resolve: {
-                imageCollection: ['HomeService', (HomeService) => {
-                    return HomeService.getImageCollection()
-                }]
-            }
+            template: require('./home.html')
         });
 }

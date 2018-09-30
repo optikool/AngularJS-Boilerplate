@@ -3,6 +3,7 @@ class FooterBarController {
         'ngInject';
 
         this.navbarService = navbarService;
+        this.copyYear = null;
     }
 
     isActive(state) {
@@ -10,7 +11,8 @@ class FooterBarController {
     }
 
     $onInit() {
-
+        let date = new Date();
+        this.copyYear = date.getFullYear();
     }
 }
 

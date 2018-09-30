@@ -1,7 +1,6 @@
 export default class NavbarService {
     constructor($state) {
         this.state = $state;
-        this.currState = null;
     }
 
     isActive(state) {
