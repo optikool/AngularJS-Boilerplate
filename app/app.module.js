@@ -14,7 +14,9 @@ import home from './pages/home'
 import instructions from './pages/instructions';
 
 import localeConstants from './constants';
-import componentModule from './components';
+import componentsModule from './components';
+import directivesModule from './directives';
+import filtersModule from './filters';
 import servicesModule from './services';
 
 export default angular.module('boilerplatePoc', [
@@ -25,7 +27,9 @@ export default angular.module('boilerplatePoc', [
         localeConstants,
         home,
         instructions,
-        componentModule,
+        componentsModule,
+        directivesModule,
+        filtersModule,
         servicesModule
     ])
     .config(routes);
