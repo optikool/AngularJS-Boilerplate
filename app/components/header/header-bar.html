@@ -1,5 +1,5 @@
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-    <a class="navbar-brand" href="#">Navbar</a>
+    <a class="navbar-brand" href="/">{{vm.locale.Brand}}</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
@@ -7,10 +7,10 @@
     <div class="collapse navbar-collapse" id="navbar-header">
         <ul class="navbar-nav mr-auto justify-content-end">
             <li class="nav-item" ng-class="vm.isActive('Home') ? 'active' : ''">
-                <a class="nav-link" ng-href="/">Home</a>
+                <a class="nav-link" ng-href="/">{{vm.locale.Home}}</a>
             </li>
             <li class="nav-item" ng-class="vm.isActive('Instructions') ? 'active' : ''">
-                <a class="nav-link" ng-href="/instructions">Instructions</a>
+                <a class="nav-link" ng-href="/instructions">{{vm.locale.Instructions}}</a>
             </li>
         </ul>
     </div>

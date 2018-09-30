@@ -1,9 +1,10 @@
 class FooterBarController {
-    constructor(navbarService) {
+    constructor(navbarService, LOCALE) {
         'ngInject';
 
         this.navbarService = navbarService;
         this.copyYear = null;
+        this.locale = LOCALE;
     }
 
     isActive(state) {
@@ -16,6 +17,6 @@ class FooterBarController {
     }
 }
 
-FooterBarController.$inject = ['navbarService'];
+FooterBarController.$inject = ['navbarService', 'LOCALE'];
 
 export default FooterBarController;

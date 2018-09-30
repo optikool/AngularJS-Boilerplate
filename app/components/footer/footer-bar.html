@@ -1,15 +1,15 @@
 <nav class="navbar fixed-bottom navbar-expand-lg navbar-dark bg-dark">
     <div id="navbar-footer" class="row justify-content-between">
         <div id="copy-year" class="col-md-2 align-items-center">
-            &#169; Copyright {{vm.copyYear}}
+            &#169; {{vm.locale.Copyright}} {{vm.copyYear}} {{vm.locale.Brand}}
         </div>
         <div class="col-md-2">
             <ul class="navbar-nav justify-content-end">
                 <li class="nav-item" ng-class="vm.isActive('Home') ? 'active' : ''">
-                    <a class="nav-link" ng-href="/">Home</a>
+                    <a class="nav-link" ng-href="/">{{vm.locale.Home}}</a>
                 </li>
                 <li class="nav-item" ng-class="vm.isActive('Instructions') ? 'active' : ''">
-                    <a class="nav-link" ng-href="/instructions">Instructions</a>
+                    <a class="nav-link" ng-href="/instructions">{{vm.locale.Instructions}}</a>
                 </li>
             </ul>
         </div>

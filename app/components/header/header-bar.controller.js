@@ -1,8 +1,10 @@
 class HeaderBarController {
-    constructor(navbarService) {
+    constructor(navbarService, LOCALE) {
         'ngInject';
 
         this.navbarService = navbarService;
+        this.locale = LOCALE;
+        console.log('this.locale: ', this.locale);
     }
 
     isActive(state) {
@@ -14,6 +16,6 @@ class HeaderBarController {
     }
 }
 
-HeaderBarController.$inject = ['navbarService'];
+HeaderBarController.$inject = ['navbarService', 'LOCALE'];
 
 export default HeaderBarController;
