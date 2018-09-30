@@ -13,9 +13,6 @@ import routes from './app.routes';
 import home from './home'
 import instructions from './instructions';
 
-// import headerBar from './common/header';
-// import footerBar from './common/footer';
-
 import componentModule from './components';
 import servicesModule from './services';
 

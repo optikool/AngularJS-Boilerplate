@@ -1,13 +1,12 @@
 class HeaderBarController {
-    constructor($state, navbarService) {
+    constructor(navbarService) {
         'ngInject';
 
         this.navbarService = navbarService;
-        this.state = $state;
     }
 
     isActive(state) {
-        return this.state.current.name === state;
+        return this.navbarService.isActive(state);
     }
 
     $onInit() {
@@ -15,6 +14,6 @@ class HeaderBarController {
     }
 }
 
-HeaderBarController.$inject = ['$state', 'navbarService'];
+HeaderBarController.$inject = ['navbarService'];
 
 export default HeaderBarController;
