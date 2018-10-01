@@ -15,21 +15,16 @@ module.exports = {
         open: true,
         port: 3000,
         before: (app) => {
-            // app.get('/', (req, res) => {
-            //     console.log('__dirname: ', __dirname + '/app' + req.url);
-            //     res.redirect('/');
-            // });
-
             app.get('/rest/:file', (req, res) => {
-                console.log('req: ', req);
-                console.log('/rest/:file __dirname: ', __dirname + '/app' + req.url);
                 res.sendFile(path.resolve(__dirname + '/app' + req.url));
             });
 
             app.get('/images/:file', (req, res) => {
-                console.log('req: ', req);
-                console.log('/images/:file __dirname: ', __dirname + '/app' + req.url);
                 res.sendFile(path.resolve(__dirname + '/app' + req.url));
+            });
+
+            app.get('/:path', (req, res) => {
+                res.redirect('/');
             });
         }
     },

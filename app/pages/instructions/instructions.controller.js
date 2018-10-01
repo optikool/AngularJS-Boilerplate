@@ -10,7 +10,7 @@ class InstructionsController {
     getImageList() {
         this.httpService.getImageCollection()
             .then(result => {
-                console.log('InstructionsController.getImageList data: ', result.data);
+                console.log('InstructionsController.getImageList result.data): ', result.data);
                 this.images = result.data;
             }, error => {
                 console.log('Error occured: ', error);
