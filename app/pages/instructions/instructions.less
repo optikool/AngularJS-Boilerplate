@@ -1,0 +1,23 @@
+#instructions-image-list {
+    > div {
+        .image-item {
+            width: 247px;
+            height: 139px;
+            overflow: hidden;
+
+            img {
+                -webkit-transition: all 0.5s ease;
+                transition: all 0.5s ease;
+                -webkit-transform: scale(1.3);
+                transform: scale(1.3);
+            }
+
+            &:hover {
+                img {
+                    -webkit-transform: scale(1);
+                    transform: scale(1);
+                }
+            }
+        }
+    }
+}

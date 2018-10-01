@@ -27,7 +27,8 @@
 
         <h5>Part 4</h5>
         <p>
-            <strong>CSS3:</strong> Add CSS3 code so if an image is hovered over, it's opacity value will remain at 1 while the opacity value of the other images changes to .5. When hovered out, opacity goes back to normal.
+            <strong>CSS3:</strong> Add the CSS3 hover effect used on the images in this page to the images on the answer page and update the effect to include a greyscale effect that transforms the image to greyscale when hovered and goes back to normal
+            color when hovered out. Existing effect must remain.
         </p>
 
         <h5>Part 5</h5>
@@ -41,9 +42,11 @@
             <strong>Functionality:</strong> Your code must not break existing functionality.
         </p>
     </div>
-    <div class="row">
+    <div id="instructions-image-list" class="row">
         <div class="col-md-3" ng-repeat="image in vm.images">
-            <img class="img-fluid mb-1" ng-src="{{image.link}}" />
+            <div class="image-item mb-1">
+                <img class="img-fluid mb-1" ng-src="{{image.link}}" />
+            </div>
         </div>
     </div>
 </div>
