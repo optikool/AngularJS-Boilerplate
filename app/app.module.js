@@ -12,6 +12,7 @@ import './css/custom.less';
 import routes from './app.routes';
 import home from './pages/home'
 import instructions from './pages/instructions';
+import answer from './pages/answer';
 
 import localeConstants from './constants';
 import componentsModule from './components';
@@ -25,11 +26,12 @@ export default angular.module('boilerplatePoc', [
         angularUiBootstrap,
         angularUiRouter,
         localeConstants,
-        home,
-        instructions,
         componentsModule,
         directivesModule,
         filtersModule,
-        servicesModule
+        servicesModule,
+        home,
+        instructions,
+        answer
     ])
     .config(routes);

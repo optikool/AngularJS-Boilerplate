@@ -1,14 +1,14 @@
-import controller from './home.controller';
-import template from './home.html';
+import controller from './answer.controller';
+import template from './answer.html';
 
 export default function routes($stateProvider) {
     $stateProvider
-        .state('Home', {
-            url: '/home',
+        .state('Answer', {
+            url: '/answer',
             template,
             controller,
             controllerAs: 'vm'
-        });
+        })
 }
 
 routes.$inject = ['$stateProvider'];

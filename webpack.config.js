@@ -1,19 +1,20 @@
 // const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
 const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
 const Visualizer = require('webpack-visualizer-plugin');
+const history = require('connect-history-api-fallback');
 
 const path = require('path');
 
 module.exports = {
     entry: './app/app.module.js',
-    // output: {
-    //   path: __dirname + '/bin',
-    //   filename: 'app.bundle.js',
-    // },
     devServer: {
         open: true,
+        publicPath: '/dist/',
         port: 3000,
+        // contentBase: path.resolve(__dirname, "/app"),
+        // watchContentBase: true,
         before: (app) => {
             app.get('/rest/:file', (req, res) => {
                 res.sendFile(path.resolve(__dirname + '/app' + req.url));
@@ -23,9 +24,7 @@ module.exports = {
                 res.sendFile(path.resolve(__dirname + '/app' + req.url));
             });
 
-            app.get('/:path', (req, res) => {
-                res.redirect('/');
-            });
+            app.use(history());
         }
     },
     module: {
@@ -78,6 +77,7 @@ module.exports = {
         ]
     },
     plugins: [
+        new HtmlWebpackPlugin()
         // new UglifyJsPlugin(),
         // new BundleAnalyzerPlugin(),
         // new Visualizer()

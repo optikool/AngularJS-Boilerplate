@@ -1,7 +1,49 @@
-<h3>{{vm.locale.Instructions}}</h3>
-<p>Instructions here</p>
-<div class="row">
-    <div class="col-md-4" ng-repeat="image in vm.images">
-        <img ng-src="{{image.link}}" />
+<div class="container-fluid">
+    <div class="row-fluid">
+        <h3>{{vm.locale.Instructions}}</h3>
+        <p>
+            Please read the entire directions before beginning as the different parts might influence your coding decisions. In this Angular coding test, you will use the images provided in the "rest/imageList.json" file to create a gallery. This coding test will
+            test your CSS3, HTML layout and Javascript/Angular abilities.
+        </p>
+
+        <h5>Part 1</h5>
+        <p>
+            <strong>ImageCollectionComponent:</strong> You may use the existing rest call to get the image list or create your own. Create an Image Collection Component and place it inside the Answer View. This component take as one of its attributes
+            a "data" binding that passes the image list into the component in order to display the images. Images should be displayed in rows of four using Bootstrap 4 responsive design concepts.
+        </p>
+
+        <h5>Part 2</h5>
+        <p>
+            <strong>ImageComponent:</strong> Create a second component, and Image Component, that accepts a single image collection. A single image collection will contain the "name", "description" and "link" for the specific image. The image component
+            should display the image using Bootstrap 4 responsive classes. Setting hard widths and height is not necessary here. Add a click even so when the image is clicked, your Image Component will send an event back to AnswerController, with the
+            "name", "description" and "link" included in the payload. Do not use rootScope.
+        </p>
+
+        <h5>Part 3</h5>
+        <p>
+            <strong>Listeners:</strong> Create a listener in AnswerController that calls a function to handle the click event sent from Image Component. This function should call Boostrap UI Modal Dialog and display the image along with it's name and
+            description in the modal dialog.
+        </p>
+
+        <h5>Part 4</h5>
+        <p>
+            <strong>CSS3:</strong> Add CSS3 code so if an image is hovered over, it's opacity value will remain at 1 while the opacity value of the other images changes to .5. When hovered out, opacity goes back to normal.
+        </p>
+
+        <h5>Part 5</h5>
+        <p>
+            <strong>EllipsisFilter:</strong> Create a filter that concatenates the description after 120 characters and adds an ellipsis (…) to the end of the description. If the description is shorter then 120 characters, no concatenation takes place.
+            If it is longer then 120 characters, it should be concatenated. If the user mouseover the description, the description should be fully shown and on mouseout, should return to concatenated state, if it was concatenated.
+        </p>
+
+        <h5>Part 6</h5>
+        <p>
+            <strong>Functionality:</strong> Your code must not break existing functionality.
+        </p>
+    </div>
+    <div class="row">
+        <div class="col-md-3" ng-repeat="image in vm.images">
+            <img class="img-fluid mb-1" ng-src="{{image.link}}" />
+        </div>
     </div>
 </div>
