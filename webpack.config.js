@@ -1,4 +1,9 @@
 // const MiniCssExtractPlugin = require("mini-css-extract-plugin");
+const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
+const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
+const Visualizer = require('webpack-visualizer-plugin');
+
+const path = require('path');
 
 module.exports = {
     entry: './app/app.module.js',
@@ -6,6 +11,28 @@ module.exports = {
     //   path: __dirname + '/bin',
     //   filename: 'app.bundle.js',
     // },
+    devServer: {
+        open: true,
+        port: 3000,
+        before: (app) => {
+            // app.get('/', (req, res) => {
+            //     console.log('__dirname: ', __dirname + '/app' + req.url);
+            //     res.redirect('/');
+            // });
+
+            app.get('/rest/:file', (req, res) => {
+                console.log('req: ', req);
+                console.log('/rest/:file __dirname: ', __dirname + '/app' + req.url);
+                res.sendFile(path.resolve(__dirname + '/app' + req.url));
+            });
+
+            app.get('/images/:file', (req, res) => {
+                console.log('req: ', req);
+                console.log('/images/:file __dirname: ', __dirname + '/app' + req.url);
+                res.sendFile(path.resolve(__dirname + '/app' + req.url));
+            });
+        }
+    },
     module: {
         rules: [{
                 test: /\.js$/,
@@ -41,16 +68,30 @@ module.exports = {
                     'style-loader',
                     'css-loader'
                 ]
+            },
+            {
+                test: /\.(png|jpg|gif)$/,
+                use: [{
+                    loader: 'file-loader',
+                    options: {
+                        name: '[path][name].[ext]',
+                        outputPath: 'dist/images/',
+                        publicPath: 'assets/images/'
+                    }
+                }]
             }
         ]
     },
-    // plugins: [
-    //   new MiniCssExtractPlugin({
-    //       // Options similar to the same options in webpackOptions.output
-    //       // both options are optional
-    //       filename: "[name].css",
-    //       chunkFilename: "[id].css"
-    //   })
-    // ],
+    plugins: [
+        // new UglifyJsPlugin(),
+        // new BundleAnalyzerPlugin(),
+        // new Visualizer()
+        //   new MiniCssExtractPlugin({
+        //       // Options similar to the same options in webpackOptions.output
+        //       // both options are optional
+        //       filename: "[name].css",
+        //       chunkFilename: "[id].css"
+        //   })
+    ],
     devtool: '#inline-source-map'
 }

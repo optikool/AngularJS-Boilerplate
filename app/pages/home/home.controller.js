@@ -1,10 +1,13 @@
 class HomeController {
-    constructor(LOCALE) {
+    constructor(LOCALE, homeService, navbarService) {
         'ngInject';
 
+        this.navbarService = navbarService;
+        this.homeHttpService = homeService;
         this.introText = null;
         this.imagePlaceHolder = null;
         this.locale = LOCALE;
+        this.images = [];
     }
 
     $onInit() {
@@ -13,6 +16,6 @@ class HomeController {
     }
 }
 
-HomeController.$inject = ['LOCALE'];
+HomeController.$inject = ['LOCALE', 'homeService', 'navbarService'];
 
 export default HomeController;

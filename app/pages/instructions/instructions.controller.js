@@ -1,15 +1,27 @@
-class HomeController {
-    constructor(LOCALE) {
+class InstructionsController {
+    constructor(LOCALE, httpService) {
         'ngInject';
 
+        this.httpService = httpService;
+        this.images = [];
         this.locale = LOCALE;
     }
 
-    $onInit() {
+    getImageList() {
+        this.httpService.getImageCollection()
+            .then(result => {
+                console.log('InstructionsController.getImageList data: ', result.data);
+                this.images = result.data;
+            }, error => {
+                console.log('Error occured: ', error);
+            });
+    }
 
+    $onInit() {
+        this.getImageList();
     }
 }
 
-HomeController.$inject = ['LOCALE'];
+InstructionsController.$inject = ['LOCALE', 'httpService'];
 
-export default HomeController;
+export default InstructionsController;
