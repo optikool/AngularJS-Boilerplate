@@ -6,7 +6,7 @@
     "scripts": {
         "dev": "webpack --mode development",
         "build": "webpack --mode production",
-        "start": "concurrently \"webpack-dev-server --progress\" \"webpack --watch --mode development\"",
+        "start": "webpack-dev-server --hot --inline --progress --colors",
         "test": "echo \"Error: no test specified\" && exit 1"
     },
     "author": "Dana Harris",
