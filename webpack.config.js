@@ -45,35 +45,8 @@ module.exports = {
                 test: /\.html$/,
                 loader: 'html-loader'
             },
-            // {
-            //   test: /\.scss$/,
-            //   //use: ExtractTextPlugin()
-            //   use: [
-            //       // fallback to style-loader in development
-            //       process.env.NODE_ENV !== 'production' ? 'style-loader' : MiniCssExtractPlugin.loader,
-            //       "css-loader",
-            //       "sass-loader"
-            //   ]
-            // },
             {
-                // test: /\.(sa|sc|c)ss$/,
                 test: /\.scss$/,
-                // use: [
-                //     devMode ? 'style-loader' : MiniCssExtractPlugin.loader,
-                //     {
-                //         loader: "css-loader",
-                //         options: {
-                //             minimize: true,
-                //             sourceMap: true
-                //         }
-                //     },
-                //     {
-                //         loader: 'postcss-loader'
-                //     },
-                //     {
-                //         loader: 'sass-loader'
-                //     }
-                // ]
                 use: [
                     'style-loader',
                     MiniCssExtractPlugin.loader,
@@ -81,25 +54,6 @@ module.exports = {
                     'postcss-loader',
                     'sass-loader'
                 ]
-                // use: ExtractTextPlugin.extract({
-                //     fallback: 'style-loader',
-                //     use: [
-                //         {
-                //             loader: 'css-loader',
-                //             options: { 
-                //                 modules: true, 
-                //                 importLoaders: 1,
-                //                 minimize: true 
-                //             }
-                //         }, 
-                //         {
-                //             loader: 'postcss-loader'
-                //         }, 
-                //         {
-                //             loader: 'sass-loader'
-                //         }
-                //     ]
-                // })
             },
             {
                 test: /\.(png|jpg|gif)$/,
@@ -135,12 +89,11 @@ module.exports = {
     plugins: [
         new CleanWebpackPlugin('dist', {} ),
         new HtmlWebpackPlugin({
-            //inject: false,
+            inject: true,
             hash: true,
             template: 'src/index.html',
             filename: 'index.html'
         }),
-        // new UglifyJsPlugin(),
         // new BundleAnalyzerPlugin(),
         // new Visualizer()
         new ExtractTextPlugin({
@@ -150,9 +103,6 @@ module.exports = {
         new MiniCssExtractPlugin({
             // Options similar to the same options in webpackOptions.output
             // both options are optional
-            // filename: "style.[contenthash].css"
-            // filename: devMode ? '[name].css' : '[name].[hash].css',
-            // chunkFilename: devMode ? '[id].css' : '[id].[hash].css'
             filename: 'style.css'
         })
     ],
