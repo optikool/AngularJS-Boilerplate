@@ -1,7 +1,7 @@
 import template from './header-bar.html';
 import controller from './header-bar.controller';
 
-import './header-bar.less';
+import './header-bar.scss';
 
 module.exports = {
     require: 'E',

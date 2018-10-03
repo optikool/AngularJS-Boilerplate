@@ -7,7 +7,7 @@ import angularUiRouter from 'angular-ui-router';
 import 'jquery';
 import 'popper.js';
 
-import './css/custom.less';
+import './css/custom.scss';
 
 import routes from './app.routes';
 import home from './pages/home'

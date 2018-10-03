@@ -1,7 +1,7 @@
 import angular from 'angular';
 import uirouter from 'angular-ui-router';
 
-import './answer.less';
+import './answer.scss';
 
 import routes from './answer.routes';
 
