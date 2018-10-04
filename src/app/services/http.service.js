@@ -1,6 +1,6 @@
 export default class HttpService {
     constructor($http) {
-        this.http = $http; // For later use
+        this.http = $http;
         this.request = {};
     }
 
@@ -9,7 +9,7 @@ export default class HttpService {
             method: 'GET',
             url: '/rest/imageList.json',
             responseType: 'json',
-            cache: false
+            cache: true
         };
 
         return this.http.get(this.request.url, this.request);

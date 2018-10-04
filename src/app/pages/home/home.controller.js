@@ -1,9 +1,10 @@
 class HomeController {
-    constructor(LOCALE, homeService, navbarService) {
+    constructor(LOCALE, homeService, navbarService, httpService) {
         'ngInject';
 
         this.navbarService = navbarService;
-        this.homeHttpService = homeService;
+        this.homeService = homeService;
+        this.httpService = httpService;
         this.introText = null;
         this.imagePlaceHolder = null;
         this.locale = LOCALE;
@@ -12,10 +13,20 @@ class HomeController {
 
     $onInit() {
         this.introText = this.locale.IntroText;
-        this.imagePlaceHolder = this.locale.ImagePlaceHolder;
+        this.getRandomImage();
+    }
+
+    getRandomImage() {
+        this.httpService.getImageCollection()
+            .then(result => {
+                const idx = this.homeService.getRandomNumber(result.data.length);
+                this.imagePlaceHolder = result.data[idx];
+            }, error => {
+                console.log('Error occured: ', error);
+            });
     }
 }
 
-HomeController.$inject = ['LOCALE', 'homeService', 'navbarService'];
+HomeController.$inject = ['LOCALE', 'homeService', 'navbarService', 'httpService'];
 
 export default HomeController;
