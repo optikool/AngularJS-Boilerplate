@@ -2,7 +2,9 @@ const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
+const ProgressWebpackPlugin = require('progress-webpack-plugin');
 const CleanWebpackPlugin = require('clean-webpack-plugin');
+const CompressionPlugin = require('compression-webpack-plugin');
 const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
 const Visualizer = require('webpack-visualizer-plugin');
 const history = require('connect-history-api-fallback');
@@ -15,9 +17,15 @@ module.exports = {
     entry: './src/app/app.module.js',
     output: {
         path: path.resolve(__dirname, 'dist'),
-        filename: '[name].js'
+        filename: 'js/[name].bundle.js',
+        chunkFilename: 'js/[name].chunk.js'
     },
     devServer: {
+        historyApiFallback: true,
+        watchOptions: {
+            aggregateTimeout: 300,
+            poll: 1000
+        },
         open: true,
         //publicPath: '/dist/',
         port: 3000,
@@ -31,8 +39,20 @@ module.exports = {
             app.get('/images/:file', (req, res) => {
                 res.sendFile(path.resolve(__dirname + '/src/app' + req.url));
             });
-
-            app.use(history());
+        },
+        stats: {
+            colors: true,
+            hash: true,
+            timings: true,
+            chunkModules: false,
+            modules: true,
+            maxModules: 0,
+            reasons: false,
+            warnings: true,
+            version: false,
+            assets: false,
+            chunks: true,
+            children: false
         }
     },
     module: {
@@ -72,22 +92,27 @@ module.exports = {
         minimizer: [
             new UglifyJsPlugin({
                 parallel: true,
-                extractComments: true
+                cache: true,
+                extractComments: true,
+                sourceMap: true,
+                uglifyOptions: {
+                    compress: {
+                        drop_console: true
+                    }
+                }
             })
         ],
         splitChunks: {
-            cacheGroups: {
-                styles: {
-                    name: 'styles',
-                    test: /\.css$/,
-                    chunks: 'all',
-                    enforce: true
-                }
-            }
+            chunks: 'all'
         }
     },
     plugins: [
         new CleanWebpackPlugin('dist', {} ),
+        new ProgressWebpackPlugin(),
+        new CompressionPlugin({
+            test: /\.js(\?.*)?$/i,
+            filename: '[path].gz[query]'
+          }),
         new HtmlWebpackPlugin({
             inject: true,
             hash: true,
@@ -103,7 +128,8 @@ module.exports = {
         new MiniCssExtractPlugin({
             // Options similar to the same options in webpackOptions.output
             // both options are optional
-            filename: 'style.css'
+            filename: 'css/[name].css',
+            chunkFilename: 'css/[id].css'
         })
     ],
     stats: 'normal',
