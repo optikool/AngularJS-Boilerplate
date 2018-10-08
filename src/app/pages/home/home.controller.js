@@ -1,5 +1,7 @@
+import CollectionActions from '../../actions/collection.actions';
+
 class HomeController {
-    constructor(LOCALE, homeService, navbarService, httpService) {
+    constructor(LOCALE, homeService, navbarService, httpService, $ngRedux) {
         'ngInject';
 
         this.navbarService = navbarService;
@@ -9,11 +11,23 @@ class HomeController {
         this.imagePlaceHolder = null;
         this.locale = LOCALE;
         this.images = [];
+        this.unsubscribe = $ngRedux.connect(this.mapStateToThis, CollectionActions)(this);
     }
 
     $onInit() {
         this.introText = this.locale.IntroText;
-        this.getRandomImage();
+        this.imagePlaceHolder = this.getRandomImage();
+    }
+
+    $onDestroy() {
+        this.unsubscribe();
+    }
+
+    mapStateToThis(state) {
+        console.log('HomeController mapStateToThis state: ', state);
+        return {
+            collectionList: state.collectionList
+        };
     }
 
     getRandomImage() {
@@ -27,6 +41,6 @@ class HomeController {
     }
 }
 
-HomeController.$inject = ['LOCALE', 'homeService', 'navbarService', 'httpService'];
+HomeController.$inject = ['LOCALE', 'homeService', 'navbarService', 'httpService', '$ngRedux'];
 
 export default HomeController;
