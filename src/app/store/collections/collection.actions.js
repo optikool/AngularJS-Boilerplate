@@ -1,5 +1,4 @@
-import IMAGE_CONSTANTS from '../constants/collection.constant';
-import collectionMiddleware from '../middleware/collection.middleware';
+import { IMAGE_CONSTANTS } from '../../constants/collection.constant';
 
 // export default function CollectionList($http) {
 //     function fetchCollectionList() {

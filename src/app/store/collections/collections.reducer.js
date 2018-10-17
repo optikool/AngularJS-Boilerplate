@@ -1,4 +1,4 @@
-import IMAGE_CONSTANTS from '../constants/collection.constant';
+import { IMAGE_CONSTANTS } from '../../constants/collection.constant';
 
 const initialState = [];
 
