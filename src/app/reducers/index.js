@@ -1,6 +1,9 @@
 import { combineReducers } from 'redux';
-import { CollectionsReducer } from './collections.reducer';
+import CollectionsReducer from './collections.reducer';
 
-export const RootReducer = combineReducers({
-    collections: CollectionsReducer
+console.log('CollectionsReducer typeof: ', typeof CollectionsReducer);
+const CombinedReducers = combineReducers({
+    CollectionsReducer
 });
+
+export default CombinedReducers;

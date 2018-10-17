@@ -16,24 +16,25 @@ import instructions from './pages/instructions';
 import answer from './pages/answer';
 
 // import the root reducer from reducers folder
-import { RootReducer } from './reducers';
 import localeConstants from './constants';
 import componentsModule from './components';
 import directivesModule from './directives';
 import filtersModule from './filters';
 import servicesModule from './services';
+import middlewareModule from './middleware';
 
 export default angular.module('boilerplatePoc', [
         angularAnimate,
         angularSanitize,
         angularUiBootstrap,
         angularUiRouter,
+        ngRedux,
         localeConstants,
         componentsModule,
         directivesModule,
         filtersModule,
         servicesModule,
-        RootReducer,
+        middlewareModule,
         home,
         instructions,
         answer

@@ -1,4 +1,4 @@
-import CollectionActions from '../../actions/collection.actions';
+import * as CollectionActions from '../../actions/collection.actions';
 
 class HomeController {
     constructor(LOCALE, homeService, navbarService, httpService, $ngRedux) {
@@ -8,15 +8,27 @@ class HomeController {
         this.homeService = homeService;
         this.httpService = httpService;
         this.introText = null;
-        this.imagePlaceHolder = null;
+        this.imagePlaceHolder = '';
         this.locale = LOCALE;
         this.images = [];
-        this.unsubscribe = $ngRedux.connect(this.mapStateToThis, CollectionActions)(this);
+        this.$ngRedux = $ngRedux;
+        this.$ngRedux.subscribe(() => {
+            console.log('this.$ngRedux.getState(): ', this.$ngRedux.getState());
+        });
+        this.unsubscribe = this.$ngRedux.connect(this.mapStateToThis, CollectionActions)(this);
     }
 
     $onInit() {
+        //this.unsubscribe = this.$ngRedux.connect(this.mapStateToThis, CollectionActions)(this);
+        this.getRandomImage();
         this.introText = this.locale.IntroText;
-        this.imagePlaceHolder = this.getRandomImage();
+        this.imagePlaceHolder = this.fetchRandomCollection();
+        console.log('CollectionActions: ', CollectionActions);
+        console.log('HomeController imagePlaceHolder: ', this.imagePlaceHolder);
+        console.log('HomeController this.unsubscribe: ', this.unsubscribe);
+        //console.log('HomeController getState: ', this.$ngRedux.fetchRandomCollection());
+
+        
     }
 
     $onDestroy() {
@@ -34,7 +46,8 @@ class HomeController {
         this.httpService.getImageCollection()
             .then(result => {
                 const idx = this.homeService.getRandomNumber(result.data.length);
-                this.imagePlaceHolder = result.data[idx];
+                this.$ngRedux.dispatch(this.fetchCollectionList(result.data));
+                this.imagePlaceHolder =  result.data[idx];
             }, error => {
                 console.log('Error occured: ', error);
             });

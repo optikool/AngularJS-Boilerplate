@@ -1,10 +1,8 @@
-import { IMAGE_CONSTANTS } from '../constants/collection.constant';
+import IMAGE_CONSTANTS from '../constants/collection.constant';
 
-const initialState = {
-    collectionList: []
-};
+const initialState = [];
 
-export default function CollectionsReducer(state = initialState, action) {
+export default function CollectionsReducer(state = initialState, action = {}) {
     switch (action.type) {
         case IMAGE_CONSTANTS.GET_IMAGES:
             console.log('CollectionsReducer get image state: ', state);
