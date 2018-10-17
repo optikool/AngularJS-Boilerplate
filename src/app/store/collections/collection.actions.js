@@ -1,4 +1,4 @@
-import { IMAGE_CONSTANTS } from '../constants/collection.constant';
+import { IMAGE_CONSTANTS } from '../../constants/collection.constant';
 
 export default function CollectionList($http) {
     function fetchCollectionList() {

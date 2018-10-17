@@ -11,12 +11,12 @@ import 'popper.js';
 import './css/custom.scss';
 
 import routes from './app.routes';
-import home from './pages/home'
-import instructions from './pages/instructions';
-import answer from './pages/answer';
+import home from './views/home'
+import instructions from './views/instructions';
+import answer from './views/answer';
 
 // import the root reducer from reducers folder
-import { RootReducer } from './reducers';
+import { RootReducer } from './store';
 import localeConstants from './constants';
 import componentsModule from './components';
 import directivesModule from './directives';

@@ -1,4 +1,4 @@
-import CollectionActions from '../../actions/collection.actions';
+import CollectionActions from '../../store/collections/collection.actions';
 
 class HomeController {
     constructor(LOCALE, homeService, navbarService, httpService, $ngRedux) {
