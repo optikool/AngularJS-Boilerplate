@@ -22,7 +22,7 @@ import componentsModule from './components';
 import directivesModule from './directives';
 import filtersModule from './filters';
 import servicesModule from './services';
-import middlewareModule from './middleware';
+import middlewareModule from './store/middleware';
 
 export default angular.module('boilerplatePoc', [
         angularAnimate,

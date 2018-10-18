@@ -1,6 +1,6 @@
 import { applyMiddleware } from 'redux';
-import CollectionMiddleware from './middleware/collection.middleware';
-import RootReducer from './reducers';
+import CollectionMiddleware from './store/middleware';
+import RootReducer from './store';
 
 export default function routes($urlRouterProvider, $locationProvider, $ngReduxProvider) {
     $urlRouterProvider.otherwise('/home');

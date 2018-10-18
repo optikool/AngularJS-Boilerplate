@@ -28,7 +28,7 @@ module.exports = {
         },
         open: true,
         //publicPath: '/dist/',
-        port: 3000,
+        port: 3500,
         // contentBase: path.resolve(__dirname, "/src/app"),
         // watchContentBase: true,
         before: (app) => {
