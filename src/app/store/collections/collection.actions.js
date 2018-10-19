@@ -27,7 +27,7 @@ import { IMAGE_CONSTANTS } from '../../constants/collection.constant';
 // CollectionList.$inject = ['$http'];
 
 function fetchList() {
-    return collectionMiddleware()
+    // return collectionMiddleware()
     return $http({
             method: 'GET',
             url: SOME_URL,
@@ -55,7 +55,7 @@ function fetchList() {
 //     }
 // }
 
-function fetchCollectionList(collection) {
+export function fetchCollectionList(collection) {
     console.log('fetchCollectionList collection: ', collection);
     return {
         type: IMAGE_CONSTANTS.GET_IMAGES,
@@ -63,7 +63,7 @@ function fetchCollectionList(collection) {
     }
 }
 
-function fetchRandomCollection() {
+export function fetchRandomCollection() {
     //console.log('fetchRandomCollection image: ', image);
     return {
         type: IMAGE_CONSTANTS.GET_RANDOM_IMAGE,
@@ -71,4 +71,4 @@ function fetchRandomCollection() {
     }
 }
 
-export { fetchCollectionList, fetchRandomCollection };
+// export { fetchCollectionList, fetchRandomCollection };
