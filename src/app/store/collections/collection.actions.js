@@ -1,5 +1,8 @@
 import { IMAGE_CONSTANTS } from '../../constants/collection.constant';
 
+export const GET_COLLECTIONS = 'GET_COLLECTIONS';
+export const GET_RANDOM_COLLECTION = 'GET_RANDOM_COLLECTION';
+export const SET_COLLECTIONS = 'SET_COLLECTIONS';
 // export default function CollectionList($http) {
 //     function fetchCollectionList() {
 //         return (dispatch, getState) => {
@@ -55,19 +58,25 @@ function fetchList() {
 //     }
 // }
 
-export function fetchCollectionList(collection) {
-    console.log('fetchCollectionList collection: ', collection);
+export function fetchCollectionList() {
     return {
-        type: IMAGE_CONSTANTS.GET_IMAGES,
-        payload: collection
+        type: GET_COLLECTIONS,
+        // payload: collection
     }
 }
 
 export function fetchRandomCollection() {
     //console.log('fetchRandomCollection image: ', image);
     return {
-        type: IMAGE_CONSTANTS.GET_RANDOM_IMAGE,
-        payload: collectionMiddleware()
+        type: GET_RANDOM_COLLECTION,
+        // payload: collectionMiddleware()
+    }
+}
+
+export function setCollectionList(data) {
+    return {
+        type: SET_COLLECTIONS,
+        payload: data
     }
 }
 
