@@ -1,4 +1,3 @@
-
 import CollectionActions from '../../store/collections/collection.actions';
 
 class HomeController {
@@ -24,12 +23,13 @@ class HomeController {
         this.getRandomImage();
         this.introText = this.locale.IntroText;
         this.imagePlaceHolder = this.fetchRandomCollection();
+        // ngRedux.dispatch(actionFactory().addItem('111111111111111'));
         console.log('CollectionActions: ', CollectionActions);
         console.log('HomeController imagePlaceHolder: ', this.imagePlaceHolder);
         console.log('HomeController this.unsubscribe: ', this.unsubscribe);
         //console.log('HomeController getState: ', this.$ngRedux.fetchRandomCollection());
 
-        
+
     }
 
     $onDestroy() {
@@ -48,7 +48,7 @@ class HomeController {
             .then(result => {
                 const idx = this.homeService.getRandomNumber(result.data.length);
                 this.$ngRedux.dispatch(this.fetchCollectionList(result.data));
-                this.imagePlaceHolder =  result.data[idx];
+                this.imagePlaceHolder = result.data[idx];
             }, error => {
                 console.log('Error occured: ', error);
             });
