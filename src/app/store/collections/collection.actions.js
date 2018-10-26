@@ -58,7 +58,8 @@ function fetchList() {
 //     }
 // }
 
-export function fetchCollectionList() {
+export function fetchCollectionList(collections) {
+    console.log('fetchCollectionList: ', collections);
     return {
         type: GET_COLLECTIONS,
         // payload: collection
@@ -74,6 +75,7 @@ export function fetchRandomCollection() {
 }
 
 export function setCollectionList(data) {
+    console.log('setCollectionList: ', data);
     return {
         type: SET_COLLECTIONS,
         payload: data
