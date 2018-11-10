@@ -20,7 +20,7 @@ export function CollectionsReducer(state = initialState, action = {}) {
             });
         case CollectionActions.SET_COLLECTIONS:
             return Object.assign({}, state, {
-                collections: action.payload
+                collections: [action.payload]
             });
         default:
             return state;

@@ -14,10 +14,10 @@ export function fetchRandomCollection() {
     }
 }
 
-export function setCollectionList(data) {
+export function setCollectionList(collection) {
     return {
         type: SET_COLLECTIONS,
-        payload: data
+        payload: collection
     }
 }
 

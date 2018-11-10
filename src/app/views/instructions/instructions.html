@@ -45,7 +45,7 @@
     <div id="instructions-image-list" class="row">
         <div class="col-md-3" ng-repeat="image in vm.images">
             <div class="image-item mb-1">
-                <img class="img-fluid mb-1" ng-src="{{image.link}}" />
+                <img class="img-fluid mb-1" ng-src="{{image.link}}" ng-click="vm.setImageList(image)" />
             </div>
         </div>
     </div>

@@ -11,6 +11,10 @@ class InstructionsController {
         this.unsubscribe = this.$ngRedux.connect(this.mapStateToThis, CollectionActions)(this);
     }
 
+    setImageList(image) {
+        this.$ngRedux.dispatch(CollectionActions.setCollectionList(image));
+    }
+
     mapStateToThis(state) {
         return {
             images: state.CollectionsReducer.collections
