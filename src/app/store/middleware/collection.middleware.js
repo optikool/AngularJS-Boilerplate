@@ -1,9 +1,7 @@
-import * as CollectionActions from '../collections/collection.actions';
-
-export default function collectionMiddleware(httpService) {
+export default function collectionMiddleware(httpService, COLLECTION_TYPES) {
   return (store) => next => action => {
     switch (action.type) {
-      case CollectionActions.GET_COLLECTIONS:
+      case COLLECTION_TYPES.GET_COLLECTIONS:
         return httpService.getImageCollection()
           .then(result => {
             action.payload = result.data;
@@ -15,13 +13,13 @@ export default function collectionMiddleware(httpService) {
 
             next({
               payload: result.data,
-              type: 'GET_RANDOM_COLLECTION'
+              type: COLLECTION_TYPES.GET_RANDOM_COLLECTION
             });
           }, error => {
               console.log('Error occured: ', error);
             next([]);
           });
-      case CollectionActions.GET_RANDOM_COLLECTION:
+      case COLLECTION_TYPES.GET_RANDOM_COLLECTION:
         console.log('collectionMiddleware GET_RANDOM_COLLECTION store getState: ', store.getState());
         console.log('collectionMiddleware GET_RANDOM_COLLECTION action: ', action);
       break;
@@ -29,5 +27,5 @@ export default function collectionMiddleware(httpService) {
   }
 }
 
-collectionMiddleware.$inject = ['httpService'];
+collectionMiddleware.$inject = ['httpService', 'COLLECTION_TYPES'];
 

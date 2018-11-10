@@ -20,7 +20,7 @@ class HomeController {
     $onInit() {
         this.introText = this.locale.IntroText;
 
-        this.randomCollectionSubscription = this.$ngRedux.subscribe(() => {
+        this.imagePlaceHolderUnsubscribe = this.$ngRedux.subscribe(() => {
             this.$timeout(() =>{
                 this.imagePlaceHolder = this.randomCollection;
             });
@@ -28,15 +28,14 @@ class HomeController {
         });
 
         this.$ngRedux.dispatch(CollectionActions.fetchCollectionList());
-        this.$ngRedux.dispatch(CollectionActions.fetchRandomCollection());
     }
 
     $onDestroy() {
         this.unsubscribe();
-        this.randomCollectionSubscription();
+        this.imagePlaceHolderUnsubscribe();
     }
 
-    mapStateToThis(state) {
+    mapStateToThis(state, data) {
         return {
             randomCollection: state.CollectionsReducer.randomCollection
         };
