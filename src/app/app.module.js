@@ -15,8 +15,6 @@ import home from './views/home'
 import instructions from './views/instructions';
 import answer from './views/answer';
 
-// import the root reducer from reducers folder
-import { CombinedReducers } from './store/reducers';
 import localeConstants from './constants';
 import componentsModule from './components';
 import directivesModule from './directives';
