@@ -1,3 +1,3 @@
 <h3>{{vm.locale.Home}}</h3>
 <p ng-bind-html="vm.introText"></p>
-<img class="img-fluid rounded mx-auto d-block" ng-src="{{vm.imagePlaceHolder.link}}" />
+<img class="img-fluid rounded mx-auto d-block" ng-src="{{vm.imagePlaceHolder.link}}" ng-if="vm.hasImage(vm.imagePlaceHolder.link)" />

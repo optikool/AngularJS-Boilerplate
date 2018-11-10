@@ -1,6 +1,6 @@
 import angular from 'angular';
-import CollectionMiddleware from './collection.middleware';
+import collectionMiddleware from './collection.middleware';
 
-export default angular.module('boilerplatePoc.factories', [])
-    .factory('collectionMiddleware', CollectionMiddleware)
+export default angular.module('boilerplatePoc.middleware', [])
+    .factory('collectionMiddleware', collectionMiddleware)
     .name;

@@ -1,27 +1,31 @@
+import * as CollectionActions from '../../store/collections/collection.actions';
+
 class InstructionsController {
-    constructor(LOCALE, httpService) {
+    constructor(LOCALE, httpService, $ngRedux) {
         'ngInject';
 
         this.httpService = httpService;
         this.images = [];
         this.locale = LOCALE;
+        this.$ngRedux = $ngRedux;
+        this.unsubscribe = this.$ngRedux.connect(this.mapStateToThis, CollectionActions)(this);
     }
 
-    getImageList() {
-        this.httpService.getImageCollection()
-            .then(result => {
-                console.log('InstructionsController.getImageList result.data): ', result.data);
-                this.images = result.data;
-            }, error => {
-                console.log('Error occured: ', error);
-            });
+    mapStateToThis(state) {
+        return {
+            images: state.CollectionsReducer.collections
+        };
     }
 
     $onInit() {
-        this.getImageList();
+        this.$ngRedux.dispatch(CollectionActions.fetchCollectionList());
+    }
+
+    $onDesroy() {
+        this.unsubscribe();
     }
 }
 
-InstructionsController.$inject = ['LOCALE', 'httpService'];
+InstructionsController.$inject = ['LOCALE', 'httpService', '$ngRedux'];
 
 export default InstructionsController;

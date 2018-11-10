@@ -1,37 +1,33 @@
-export function CollectionMiddleware($http) {
-  return (store) => {
-    console.log('CollectionMiddleware store: ', store);
-    //console.log('CollectionMiddleware getState: ', getState());
-    return (next) => {
-      console.log('CollectionMiddleware next: ', next);
-      return (action) => {
-        console.log('CollectionMiddleware action: ', action);
-        // if (typeof action === 'function') {
-        //   console.log('action is a function');
-        //   return action(dispatch, getState);
-        // }
-        let result = [{
-          "name": "image 1",
-          "link": "/images/image_01.jpg",
-          "descriptions": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec condimentum ligula est, et ullamcorper purus varius nec."
-        }, {
-          "name": "image 2",
-          "link": "/images/image_02.jpg",
-          "descriptions": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec condimentum ligula est, et ullamcorper purus varius nec."
-        }, {
-          "name": "image 3",
-          "link": "/images/image_03.jpg",
-          "descriptions": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec condimentum ligula est, et ullamcorper purus varius nec."
-        }];
-        action.payload = {
-          collections: result
-        };
+import * as CollectionActions from '../collections/collection.actions';
 
-        return next(action);
-      }
-    }
+export default function collectionMiddleware(httpService) {
+  return (store) => next => action => {
+    switch (action.type) {
+      case CollectionActions.GET_COLLECTIONS:
+        return httpService.getImageCollection()
+          .then(result => {
+            action.payload = result.data;
+
+            next({
+              payload: result.data,
+              type: action.type
+            });
+
+            next({
+              payload: result.data,
+              type: 'GET_RANDOM_COLLECTION'
+            });
+          }, error => {
+              console.log('Error occured: ', error);
+            next([]);
+          });
+      case CollectionActions.GET_RANDOM_COLLECTION:
+        console.log('collectionMiddleware GET_RANDOM_COLLECTION store getState: ', store.getState());
+        console.log('collectionMiddleware GET_RANDOM_COLLECTION action: ', action);
+      break;
+    }  
   }
 }
 
-CollectionMiddleware.$inject = ['$http'];
+collectionMiddleware.$inject = ['httpService'];
 

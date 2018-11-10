@@ -18,9 +18,6 @@ class HomeController {
     }
 
     $onInit() {
-        
-        this.getRandomImage();
-
         this.introText = this.locale.IntroText;
 
         this.randomCollectionSubscription = this.$ngRedux.subscribe(() => {
@@ -30,8 +27,8 @@ class HomeController {
             
         });
 
-        this.$ngRedux.dispatch(new CollectionActions.fetchCollectionList());
-        this.$ngRedux.dispatch(new CollectionActions.fetchRandomCollection());
+        this.$ngRedux.dispatch(CollectionActions.fetchCollectionList());
+        this.$ngRedux.dispatch(CollectionActions.fetchRandomCollection());
     }
 
     $onDestroy() {
@@ -40,19 +37,13 @@ class HomeController {
     }
 
     mapStateToThis(state) {
-        console.log('HomeController mapStateToThis state: ', state);
         return {
             randomCollection: state.CollectionsReducer.randomCollection
         };
     }
 
-    getRandomImage() {
-        this.httpService.getImageCollection()
-            .then(result => {
-                this.$ngRedux.dispatch(new CollectionActions.setCollectionList(result.data));
-            }, error => {
-                console.log('Error occured: ', error);
-            });
+    hasImage(image) {
+        return image && image !== '' && typeof image === 'string';
     }
 }
 

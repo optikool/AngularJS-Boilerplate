@@ -40,4 +40,5 @@ export default angular.module('boilerplatePoc', [
         instructions,
         answer
     ])
-    .config(routes);
+    .config(routes)
+    .name;
